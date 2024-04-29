@@ -1,38 +1,300 @@
-.App {
-  text-align: center;
+:root {
+  --main-color: #58949c;
+  --s-xsmall: 0.625em;
+  --s-small: 1.2em;
+  --border-width: 1px;
+  --t-base: 0.4s;
+  --t-fast: 0.2s;
+  --e-in: ease-in;
+  --e-out: cubic-bezier(0.11, 0.29, 0.18, 0.98);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-app {
+  background-color: #eee;
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.project-container {
+  width: 65%;
+  margin: auto;
+  padding: 50px 20px 60px;
+  background-color: #f8f5f5;
+  min-height: 100vh;
+  position: relative;
+  @media (max-width: 967px) {
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.project-container .tasks-numbers{
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  background-color: var(--main-color);
+  color: #f6f0f0;
+  padding: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+
+.logo h1 {
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+.head {
+  margin: 20px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.head h3 {
+  font-size: 12px;
+  color: #181515;
+}
+.head ul li {
+  margin-right: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #3a3a3a;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.head ul li.active,
+.head ul li:hover {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+.head .new-task button {
+  background-color: var(--main-color);
+  border: none;
+  padding: 6px 10px;
+  font-size: 10px;
+  color: #fff;
+  border-radius: 5px;
+}
+.tasks-list .task {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 15px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.tasks-list .task:hover{
+  background-color: var(--main-color);
+}
+.task:hover .checkbox-wrapper-33 .checkbox__symbol{
+  border: var(--border-width) solid #fff !important;
+}
+.task:hover .checkbox-wrapper-33 .checkbox__symbol:after{
+  background-color: #fff;
+}
+.task:hover .checkbox-wrapper-33 .checkbox .icon-checkbox{
+  color: #fff;
+}
+.tasks-list .task:hover span,
+.task:hover svg{
+  color: #eee;
+}
+.tasks-list .task:hover h4{
+  color: #fff;
+}
+.tasks-list .task h4 {
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-bottom: 3px;
+  color: #000;
+}
+.tasks-list .task h4.hide{
+  text-decoration: line-through;
+}
+.tasks-list .task span,
+.task svg {
+  font-size: 11px;
+  color: #b0b0b0;
+  margin-right: 5px;
+}
+.trash {
+  position: relative;
+}
+.trash svg {
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+.trash svg:hover {
+  color: #000;
+}
+
+
+.checkbox-wrapper-33 .visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.checkbox-wrapper-33 .checkbox + .checkbox {
+  margin-top: var(--s-small);
+}
+.checkbox-wrapper-33 .checkbox__symbol {
+  display: inline-block;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-right: calc(var(--s-small) * 0.7);
+  border: var(--border-width) solid var(--main-color);
+  position: relative;
+  border-radius: 0.1em;
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+  transition: box-shadow var(--t-base) var(--e-out),
+    background-color var(--t-base);
+  box-shadow: 0 0 0 0 var(--main-color);
+}
+.checkbox-wrapper-33 .checkbox__symbol:after {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  width: 0.25em;
+  height: 0.25em;
+  background-color: var(--main-color);
+  opacity: 0;
+  border-radius: 3em;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+}
+.checkbox-wrapper-33 .checkbox .icon-checkbox {
+  width: 1em;
+  height: 1em;
+  margin: auto;
+  fill: none;
+  stroke-width: 3;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  color: var(--main-color);
+  display: inline-block;
+}
+.checkbox-wrapper-33 .checkbox .icon-checkbox path {
+  transition: stroke-dashoffset var(--t-fast) var(--e-in);
+  stroke-dasharray: 30px, 31px;
+  stroke-dashoffset: 31px;
+}
+.checkbox-wrapper-33 .checkbox__textwrapper {
+  margin: 0;
+}
+.checkbox-wrapper-33 .checkbox__trigger:checked + .checkbox__symbol:after {
+  -webkit-animation: ripple-33 1.5s var(--e-out);
+  animation: ripple-33 1.5s var(--e-out);
+}
+.checkbox-wrapper-33
+  .checkbox__trigger:checked
+  + .checkbox__symbol
+  .icon-checkbox
+  path {
+  transition: stroke-dashoffset var(--t-base) var(--e-out);
+  stroke-dashoffset: 0px;
+}
+.checkbox-wrapper-33 .checkbox__trigger:focus + .checkbox__symbol {
+  box-shadow: 0 0 0 0.25em var(--c-primary-20-percent-opacity);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@-webkit-keyframes ripple-33 {
   from {
-    transform: rotate(0deg);
+    transform: scale(0);
+    opacity: 1;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 0;
+    transform: scale(20);
   }
+}
+
+@keyframes ripple-33 {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(20);
+  }
+}
+.form{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0000006d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+}
+.form .add-new-task{
+  width: 50%;
+  background-color: #fff;
+  margin: auto;
+  padding: 50px 30px;
+  border-radius: 10px;
+  cursor: default;
+  @media (max-width: 967px) {
+    width: 100%;
+  }
+}
+.form .add-new-task input{
+  padding: 7px 10px;
+  border: 1.5px solid #eee;
+  outline: none;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.form .add-new-task .btns button{
+  border: 1px solid var(--main-color);
+  margin-right: 10px;
+  width: 100px;
+  padding: 5px 0;
+  font-size: 12px;
+  border-radius: 3px;
+  background-color: var(--main-color);
+  color: #fff;
+  transition: .2s;
+}
+.form .add-new-task button:first-of-type{
+  background-color: transparent;
+  border: 1px solid #be1616;
+  color: #000;
+}
+.form .add-new-task button:first-of-type:hover{
+  background-color: #be1616;
+  color: #fff;
+}
+
+.no-tasks{
+  text-transform: uppercase;
+}
+.no-tasks h6{
+  font-size: 12px;
+}
+.no-tasks svg{
+  width: 150px;
 }
