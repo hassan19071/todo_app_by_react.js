@@ -15,15 +15,12 @@
 }
 
 .project-container {
-  width: 65%;
+  width:100%;
   margin: auto;
   padding: 50px 20px 60px;
   background-color: #f8f5f5;
   min-height: 100vh;
   position: relative;
-  @media (max-width: 967px) {
-    width: 100%;
-  }
 }
 
 .project-container .tasks-numbers{

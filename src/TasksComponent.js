@@ -89,7 +89,7 @@ export default function Tasks() {
                     </h3>
                   </div>
                   <div className="types-lists">
-                    <ul className="list-unstyled d-flex mb-0 mt-3">
+                    <ul className="list-unstyled d-flex mb-0 mt-4">
                       <li
                         className={showStatusTasks === 0 ? "active" : ""}
                         onClick={() => setShowStatusTasks(0)}
