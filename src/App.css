@@ -15,7 +15,7 @@
 }
 
 .project-container {
-  width:100%;
+  width:80%;
   margin: auto;
   padding: 50px 20px 60px;
   background-color: #f8f5f5;
@@ -254,7 +254,12 @@
   padding: 50px 30px;
   border-radius: 10px;
   cursor: default;
-  @media (max-width: 967px) {
+}
+@media (max-width: 967px) {
+  .form .add-new-task{
+    width: 100%;
+  }
+  .project-container{
     width: 100%;
   }
 }
