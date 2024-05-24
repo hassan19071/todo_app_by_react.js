@@ -336,6 +336,7 @@ export default function Tasks() {
                 className="w-100"
                 ref={inputRef}
               />
+              <label className="me-3">Choose date </label>
               <input
                 type="datetime-local"
                 value={taskDate}
